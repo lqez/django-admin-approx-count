@@ -1,0 +1,3 @@
+recursive-include django_summernote *
+
+global-exclude *.pyc
