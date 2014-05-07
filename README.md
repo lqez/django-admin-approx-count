@@ -28,14 +28,26 @@ or, download / clone from [source repo](https://github.com/lqez/django-admin-app
 Usage
 -----
 
-Use shipped mixin in `admin.py`.
+Use shipped mixins in your `admin.py`.
 
+    from django.contrib import admin
     from approx_count.mixin import MaxIdAdminMixin, TableStatusMixin
 
-    class SomeAdmin(MaxIdAdminMixin):
+    class SomeAdmin(MaxIdAdminMixin, admin.ModelAdmin):
         ...
 
-    class AnotherAdmin(TableStatusMixin):
+    class AnotherAdmin(TableStatusMixin, admin.ModelAdmin):
+        ...
+
+
+Or, with admin classes.
+
+    from approx_count.admin import MaxIdModelAdmin, TableStatusModelAdmin
+
+    class SomeAdmin(MaxIdModelAdmin):
+        ...
+
+    class AnotherAdmin(TableStatusModelAdmin):
         ...
 
 

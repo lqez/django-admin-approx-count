@@ -1,4 +1,3 @@
-from django.contrib import admin
 from django.db import connections
 from django.db.models.query import QuerySet
 
@@ -29,7 +28,7 @@ class _QuerySet(QuerySet):
         return default_count
 
 
-class MaxIdAdminMixin(admin.ModelAdmin):
+class MaxIdAdminMixin(object):
     class _MaxIdQuerySet(_QuerySet):
         def _approx_count(self, default_count):
             cursor = connections[self.db].cursor()
@@ -42,7 +41,7 @@ class MaxIdAdminMixin(admin.ModelAdmin):
         return qs._clone(klass=self._MaxIdQuerySet)
 
 
-class TableStatusAdminMixin(admin.ModelAdmin):
+class TableStatusAdminMixin(object):
     class _TableStatusQuerySet(_QuerySet):
         def _approx_count(self, default_count):
             # For MySQL, by Nova
