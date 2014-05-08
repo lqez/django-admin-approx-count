@@ -10,8 +10,9 @@ class _QuerySet(QuerySet):
         raise NotImplementedError('Do not use this class itself.')
 
     def count(self):
-        if self._result_cache is not None and not self._iter:
-            return len(self._result_cache)
+        if self._result_cache is not None:
+            if hasattr(self, '_iter') and not self._iter:
+                return len(self._result_cache)
 
         query = self.query
         default_count = self.query.get_count(using=self.db)
