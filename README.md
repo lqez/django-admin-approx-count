@@ -31,12 +31,12 @@ Usage
 Use shipped mixins in your `admin.py`.
 
     from django.contrib import admin
-    from approx_count.mixin import MaxIdAdminMixin, TableStatusMixin
+    from approx_count.mixin import MaxIdAdminMixin, TableStatusAdminMixin
 
     class SomeAdmin(MaxIdAdminMixin, admin.ModelAdmin):
         ...
 
-    class AnotherAdmin(TableStatusMixin, admin.ModelAdmin):
+    class AnotherAdmin(TableStatusAdminMixin, admin.ModelAdmin):
         ...
 
 
@@ -57,7 +57,7 @@ Mixins
 Default django queryset uses `SELECT COUNT(*) FROM TABLE` to calculate row count. However,
 
  - `MaxIdAdminMixin` uses `SELECT MAX(ID) FROM TABLE`.
- - `TableStatusMixin` uses table status / information.
+ - `TableStatusAdminMixin` uses table status / information.
 
 
 Note
